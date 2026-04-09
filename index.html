@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Base - Tailwind Clean</title>
+  <link rel="icon" href="favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          boxShadow: {
+            soft: '0 10px 30px rgba(2, 6, 23, 0.08)',
+          }
+        }
+      }
+    }
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body x-data="app()" x-init="init()" class="bg-white text-slate-800 antialiased dark:bg-slate-950 dark:text-slate-100">
+  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/85">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <a href="index.htm" class="flex items-center gap-3">
+        <img src="images/logo-light.svg" alt="Logo" class="h-8 dark:hidden" />
+        <img src="images/logo-dark.svg" alt="Logo" class="hidden h-8 dark:block" />
+      </a>
+
+      <nav class="hidden items-center gap-8 lg:flex">
+        <a href="#home" class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Home</a>
+        <a href="#features" class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Features</a>
+        <a href="#services" class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Pages</a>
+        <a href="#support" class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Support</a>
+      </nav>
+
+      <div class="hidden items-center gap-3 lg:flex">
+        <button @click="darkMode = !darkMode; syncTheme()" class="rounded-full border border-slate-200 p-2 text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800" aria-label="Toggle dark mode">
+          <svg x-show="!darkMode" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v2.25M12 18.75V21M4.72 4.72l1.59 1.59M17.69 17.69l1.59 1.59M3 12h2.25M18.75 12H21M4.72 19.28l1.59-1.59M17.69 6.31l1.59-1.59M15.75 12A3.75 3.75 0 1 1 8.25 12a3.75 3.75 0 0 1 7.5 0Z"/></svg>
+          <svg x-show="darkMode" x-cloak class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12.79A9 9 0 1 1 11.21 3c0 .38.02.76.08 1.13A7 7 0 0 0 19.87 12c.37.06.75.08 1.13.08Z"/></svg>
+        </button>
+        <a href="signin.html" class="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">Sign In</a>
+        <a href="signup.html" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700">Sign Up</a>
+      </div>
+
+      <button @click="mobileOpen = !mobileOpen" class="inline-flex rounded-lg border border-slate-200 p-2 text-slate-700 dark:border-slate-700 dark:text-slate-200 lg:hidden">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+
+    <div x-show="mobileOpen" x-cloak x-transition class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+      <div class="space-y-1 px-4 py-4">
+        <a href="#home" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
+        <a href="#features" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Features</a>
+        <a href="#services" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Services</a>
+        <a href="#pricing" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Pricing</a>
+        <a href="#projects" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
+        <a href="#support" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Support</a>
+        <div class="flex items-center gap-3 pt-3">
+          <button @click="darkMode = !darkMode; syncTheme()" class="rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium dark:border-slate-700">Toggle Theme</button>
+          <a href="signin.html" class="rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Sign In</a>
+          <a href="signup.html" class="rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-blue-50 via-white to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-28">
+        <div>
+          <h1 class="mt-6 max-w-2xl text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-white">We specialize in UI/UX, Web Development, Digital Marketing.</h1>
+          <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla magna mauris. Nulla fermentum viverra sem eu rhoncus consequat varius nisi quis, posuere magna.</p>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+            <a href="#pricing" class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-soft transition hover:bg-blue-700">Get Started Now</a>
+            <div>
+              <a href="tel:0123456789" class="block text-base font-semibold text-slate-900 dark:text-white">Call us (0123) 456 – 789</a>
+              <span class="text-sm text-slate-500 dark:text-slate-400">For any question or concern</span>
+            </div>
+          </div>
+        </div>
+       <div class="relative flex items-center justify-center">
+  
+  <!-- Background circle -->
+  <div class="absolute w-[800px] h-[700px] bg-blue-600 rounded-full right-0 top-1/2 -translate-y-1/2 translate-x-1/4"></div>
+
+  <!-- Yellow shape -->
+  <div class="absolute left-0 top-1/2 -translate-y-1/2 w-40 h-40 bg-yellow-400 rounded-bl-full"></div>
+
+  <!-- Image -->
+  <img 
+    src="images/hero.png" 
+    alt="Hero"
+    class="relative z-10 w-[700px] object-contain"
+  />
+
+  <!-- Wave shape -->
+  <img 
+    src="images/shape-03.svg"
+    class="absolute bottom-10 left-10 w-20 opacity-70"
+  />
+
+</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-16 sm:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <img src="images/icon-01.svg" alt="Support" class="h-12 w-12" />
+            <h3 class="mt-4 text-xl font-semibold">24/7 Support</h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet conse adipiscing elit.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <img src="images/icon-02.svg" alt="Ownership" class="h-12 w-12" />
+            <h3 class="mt-4 text-xl font-semibold">Take Ownership</h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet conse adipiscing elit.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <img src="images/icon-03.svg" alt="Team Work" class="h-12 w-12" />
+            <h3 class="mt-4 text-xl font-semibold">Team Work</h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet conse adipiscing elit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-24">
+      <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <div class="grid grid-cols-2 gap-4">
+          <img src="images/about-01.png" alt="About 1" class="rounded-2xl object-cover shadow-soft" />
+          <img src="images/about-02.png" alt="About 2" class="mt-10 rounded-2xl object-cover shadow-soft" />
+          <img src="images/about-03.png" alt="About 3" class="col-span-2 rounded-2xl object-cover shadow-soft" />
+        </div>
+        <div class="flex flex-col justify-center">
+          <span class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">Why Choose Us</span>
+          <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">We Make Our customers happy by giving Best services.</h2>
+          <p class="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
+          <a href="https://www.youtube.com/watch?v=xcJtL7QggTI" class="mt-8 inline-flex items-center gap-3 text-base font-semibold text-slate-900 dark:text-white">
+            <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-soft">
+              <img src="images/icon-play.svg" alt="Play" class="h-5 w-5" />
+            </span>
+            SEE HOW WE WORK
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-50 py-16 dark:bg-slate-900/50 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Meet With Our Creative Dedicated Team</h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.</p>
+        </div>
+        <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-950">
+            <img src="images/team-01.png" alt="Olivia Andrium" class="w-full rounded-2xl object-cover" />
+            <h3 class="mt-5 text-xl font-semibold">Olivia Andrium</h3>
+            <p class="mt-1 text-slate-600 dark:text-slate-300">Product Manager</p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-950">
+            <img src="images/team-02.png" alt="Jemse Kemorun" class="w-full rounded-2xl object-cover" />
+            <h3 class="mt-5 text-xl font-semibold">Jemse Kemorun</h3>
+            <p class="mt-1 text-slate-600 dark:text-slate-300">Product Designer</p>
+          </div>
+          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-950">
+            <img src="images/team-03.png" alt="Avi Pestarica" class="w-full rounded-2xl object-cover" />
+            <h3 class="mt-5 text-xl font-semibold">Avi Pestarica</h3>
+            <p class="mt-1 text-slate-600 dark:text-slate-300">Web Designer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-16 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">We Offer The Best Quality Service for You</h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.</p>
+        </div>
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <template x-for="service in services" :key="service.title">
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+              <img :src="service.icon" :alt="service.title" class="h-12 w-12" />
+              <h3 class="mt-4 text-xl font-semibold" x-text="service.title"></h3>
+              <p class="mt-2 text-slate-600 dark:text-slate-300" x-text="service.description"></p>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="bg-slate-50 py-16 dark:bg-slate-900/50 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">We Offer Great Affordable Premium Prices.</h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using.</p>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center gap-4">
+          <span class="text-sm font-medium">Bill Monthly</span>
+          <button @click="billPlan = billPlan === 'monthly' ? 'annually' : 'monthly'" class="relative inline-flex h-8 w-16 items-center rounded-full bg-slate-300 p-1 dark:bg-slate-700">
+            <span :class="billPlan === 'annually' ? 'translate-x-8' : 'translate-x-0'" class="inline-block h-6 w-6 transform rounded-full bg-white transition"></span>
+          </button>
+          <span class="text-sm font-medium">Bill Annually</span>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-3">
+          <template x-for="plan in plans" :key="plan.name">
+            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-soft dark:border-slate-800 dark:bg-slate-950">
+              <h3 class="text-xl font-semibold" x-text="plan.name"></h3>
+              <div class="mt-6 flex items-end gap-2">
+                <span class="text-4xl font-extrabold" x-text="`$${billPlan === 'monthly' ? plan.price.monthly : plan.price.annually}`"></span>
+                <span class="pb-1 text-slate-500 dark:text-slate-400" x-text="billPlan === 'monthly' ? '/per month' : '/per year'"></span>
+              </div>
+              <p class="mt-3 text-sm text-slate-500 dark:text-slate-400">No credit card required</p>
+              <a href="#" :class="plan.featured ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700'" class="mt-6 inline-flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition">Try for free</a>
+              <ul class="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                <template x-for="feature in plan.features" :key="feature">
+                  <li class="flex items-start gap-3">
+                    <svg class="mt-0.5 h-5 w-5 flex-none text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                    <span x-text="feature"></span>
+                  </li>
+                </template>
+              </ul>
+              <p class="mt-6 text-sm font-medium">7-day free trial</p>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+  <script>
+    function app() {
+      return {
+        darkMode: true,
+        mobileOpen: false,
+        showTop: false,
+        billPlan: 'monthly',
+        services: [
+          { icon: 'images/icon-04.svg', title: 'Crafted for Startups', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.' },
+          { icon: 'images/icon-05.svg', title: 'High-quality Design', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.' },
+          { icon: 'images/icon-06.svg', title: 'All Essential Sections', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.' },
+          { icon: 'images/icon-07.svg', title: 'Speed Optimized', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.' },
+          { icon: 'images/icon-05.svg', title: 'Fully Customizable', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.' },
+          { icon: 'images/icon-06.svg', title: 'Regular Updates', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor.' }
+        ],
+        plans: [
+          { name: 'Starter', featured: false, price: { monthly: 29, annually: 149 }, features: ['400 GB Storage', 'Unlimited Photos & Videos', 'Exclusive Support'] },
+          { name: 'Growth Plan', featured: true, price: { monthly: 59, annually: 608 }, features: ['400 GB Storage', 'Unlimited Photos & Videos', 'Exclusive Support'] },
+          { name: 'Business', featured: false, price: { monthly: 139, annually: 1568 }, features: ['400 GB Storage', 'Unlimited Photos & Videos', 'Exclusive Support'] }
+        ],
+        projectTabs: [
+          { label: 'All', value: 'all' },
+          { label: 'Branding Strategy', value: 'branding' },
+          { label: 'Digital Experiences', value: 'digital' },
+          { label: 'Ecommerce', value: 'ecommerce' }
+        ],
+        projects: [
+          { image: 'images/project-01.png', title: 'Photo Retouching', category: 'Branded Ecommerce', tags: ['branding', 'ecommerce'] },
+          { image: 'images/project-02.png', title: 'Digital Product Story', category: 'Digital Experiences', tags: ['digital'] },
+          { image: 'images/project-04.png', title: 'Identity Refresh', category: 'Branded Ecommerce', tags: ['branding', 'ecommerce'] },
+          { image: 'images/project-03.png', title: 'Store Experience', category: 'Branded Ecommerce', tags: ['digital', 'ecommerce'] }
+        ],
+        posts: [
+          { image: 'images/blog-01.png', author: 'Musharof Chy', date: '25 Dec, 2025', title: 'Free advertising for your online business' },
+          { image: 'images/blog-02.png', author: 'Musharof Chy', date: '25 Dec, 2025', title: '9 simple ways to improve your design skills' },
+          { image: 'images/blog-03.png', author: 'Musharof Chy', date: '25 Dec, 2025', title: 'Tips to quickly improve your coding speed.' }
+        ],
+        init() {
+          const saved = localStorage.getItem('darkMode');
+          this.darkMode = saved === null ? true : JSON.parse(saved);
+          this.syncTheme();
+          window.addEventListener('scroll', () => {
+            this.showTop = window.scrollY > 200;
+          });
+        },
+        syncTheme() {
+          localStorage.setItem('darkMode', JSON.stringify(this.darkMode));
+          document.documentElement.classList.toggle('dark', this.darkMode);
+        },
+        filteredProjects(filter) {
+          if (filter === 'all') return this.projects;
+          return this.projects.filter(project => project.tags.includes(filter));
+        }
+      }
+    }
+  </script>
+</body>
+</html>
