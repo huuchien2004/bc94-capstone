@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Keep Swiper nav buttons in their original position (flex row below slides) */
+.testimonial-01 .swiper-button-prev,
+.testimonial-01 .swiper-button-next {
+  position: static;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: none;
+}
+.testimonial-01 .swiper-button-prev::after,
+.testimonial-01 .swiper-button-next::after {
+  display: none;
+}
+
+.shape-7 {
+    max-width: 80px;
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}

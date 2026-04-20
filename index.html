@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Base - Tailwind Clean</title>
   <link rel="icon" href="favicon.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Animate -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="./style.css">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -20,8 +29,10 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
+
 <body x-data="app()" x-init="init()" class="bg-white text-slate-800 antialiased dark:bg-slate-950 dark:text-slate-100">
-  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/85">
+  <header
+    class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/85">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
       <a href="index.htm" class="flex items-center gap-3">
         <img src="images/logo-light.svg" alt="Logo" class="h-8 dark:hidden" />
@@ -29,37 +40,66 @@
       </a>
 
       <nav class="hidden items-center gap-8 lg:flex">
-        <a href="#home" class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Home</a>
-        <a href="#features" class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Features</a>
-        <a href="#services" class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Pages</a>
-        <a href="#support" class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Support</a>
+        <a href="#home"
+          class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Home</a>
+        <a href="#features"
+          class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Features</a>
+        <a href="#services"
+          class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Pages</a>
+        <a href="#support"
+          class="text-sm font-medium text-slate-700 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Support</a>
       </nav>
 
       <div class="hidden items-center gap-3 lg:flex">
-        <button @click="darkMode = !darkMode; syncTheme()" class="rounded-full border border-slate-200 p-2 text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800" aria-label="Toggle dark mode">
-          <svg x-show="!darkMode" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v2.25M12 18.75V21M4.72 4.72l1.59 1.59M17.69 17.69l1.59 1.59M3 12h2.25M18.75 12H21M4.72 19.28l1.59-1.59M17.69 6.31l1.59-1.59M15.75 12A3.75 3.75 0 1 1 8.25 12a3.75 3.75 0 0 1 7.5 0Z"/></svg>
-          <svg x-show="darkMode" x-cloak class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12.79A9 9 0 1 1 11.21 3c0 .38.02.76.08 1.13A7 7 0 0 0 19.87 12c.37.06.75.08 1.13.08Z"/></svg>
+        <button @click="darkMode = !darkMode; syncTheme()"
+          class="rounded-full border border-slate-200 p-2 text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+          aria-label="Toggle dark mode">
+          <svg x-show="!darkMode" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+              d="M12 3v2.25M12 18.75V21M4.72 4.72l1.59 1.59M17.69 17.69l1.59 1.59M3 12h2.25M18.75 12H21M4.72 19.28l1.59-1.59M17.69 6.31l1.59-1.59M15.75 12A3.75 3.75 0 1 1 8.25 12a3.75 3.75 0 0 1 7.5 0Z" />
+          </svg>
+          <svg x-show="darkMode" x-cloak class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+              d="M21 12.79A9 9 0 1 1 11.21 3c0 .38.02.76.08 1.13A7 7 0 0 0 19.87 12c.37.06.75.08 1.13.08Z" />
+          </svg>
         </button>
-        <a href="signin.html" class="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">Sign In</a>
-        <a href="signup.html" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700">Sign Up</a>
+        <a href="signin.html"
+          class="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">Sign
+          In</a>
+        <a href="signup.html"
+          class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700">Sign
+          Up</a>
       </div>
 
-      <button @click="mobileOpen = !mobileOpen" class="inline-flex rounded-lg border border-slate-200 p-2 text-slate-700 dark:border-slate-700 dark:text-slate-200 lg:hidden">
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button @click="mobileOpen = !mobileOpen"
+        class="inline-flex rounded-lg border border-slate-200 p-2 text-slate-700 dark:border-slate-700 dark:text-slate-200 lg:hidden">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
       </button>
     </div>
 
-    <div x-show="mobileOpen" x-cloak x-transition class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+    <div x-show="mobileOpen" x-cloak x-transition
+      class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:hidden">
       <div class="space-y-1 px-4 py-4">
-        <a href="#home" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
-        <a href="#features" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Features</a>
-        <a href="#services" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Services</a>
-        <a href="#pricing" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Pricing</a>
-        <a href="#projects" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
-        <a href="#support" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Support</a>
+        <a href="#home"
+          class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
+        <a href="#features"
+          class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Features</a>
+        <a href="#services"
+          class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Services</a>
+        <a href="#pricing"
+          class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Pricing</a>
+        <a href="#projects"
+          class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
+        <a href="#support"
+          class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Support</a>
         <div class="flex items-center gap-3 pt-3">
-          <button @click="darkMode = !darkMode; syncTheme()" class="rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium dark:border-slate-700">Toggle Theme</button>
-          <a href="signin.html" class="rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Sign In</a>
+          <button @click="darkMode = !darkMode; syncTheme()"
+            class="rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium dark:border-slate-700">Toggle
+            Theme</button>
+          <a href="signin.html"
+            class="rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800">Sign In</a>
           <a href="signup.html" class="rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white">Sign Up</a>
         </div>
       </div>
@@ -68,59 +108,67 @@
 
   <main>
     <section id="home" class="relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-b from-blue-50 via-white to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950"></div>
-      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-28">
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-blue-50 via-white to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950">
+      </div>
+      <div
+        class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-28">
         <div>
-          <h1 class="mt-6 max-w-2xl text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-white">We specialize in UI/UX, Web Development, Digital Marketing.</h1>
-          <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla magna mauris. Nulla fermentum viverra sem eu rhoncus consequat varius nisi quis, posuere magna.</p>
+          <h1
+            class="mt-6 max-w-2xl text-4xl font-extrabold leading-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-white">
+            We specialize in UI/UX, Web Development, Digital Marketing.</h1>
+          <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Quisque fringilla magna mauris. Nulla fermentum viverra sem eu rhoncus
+            consequat varius nisi quis, posuere magna.</p>
           <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a href="#pricing" class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-soft transition hover:bg-blue-700">Get Started Now</a>
+            <a href="#pricing"
+              class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-soft transition hover:bg-blue-700">Get
+              Started Now</a>
             <div>
-              <a href="tel:0123456789" class="block text-base font-semibold text-slate-900 dark:text-white">Call us (0123) 456 – 789</a>
+              <a href="tel:0123456789" class="block text-base font-semibold text-slate-900 dark:text-white">Call us
+                (0123) 456 – 789</a>
               <span class="text-sm text-slate-500 dark:text-slate-400">For any question or concern</span>
             </div>
           </div>
         </div>
-       <div class="relative flex items-center justify-center">
-  
-  <!-- Background circle -->
-  <div class="absolute w-[800px] h-[700px] bg-blue-600 rounded-full right-0 top-1/2 -translate-y-1/2 translate-x-1/4"></div>
+        <div class="relative flex items-center justify-center">
 
-  <!-- Yellow shape -->
-  <div class="absolute left-0 top-1/2 -translate-y-1/2 w-40 h-40 bg-yellow-400 rounded-bl-full"></div>
+          <!-- Background circle -->
+          <div
+            class="absolute w-[800px] h-[700px] bg-blue-600 rounded-full right-0 top-1/2 -translate-y-1/2 translate-x-1/4">
+          </div>
 
-  <!-- Image -->
-  <img 
-    src="images/hero.png" 
-    alt="Hero"
-    class="relative z-10 w-[700px] object-contain"
-  />
+          <!-- Yellow shape -->
+          <div class="absolute left-0 top-1/2 -translate-y-1/2 w-40 h-40 bg-yellow-400 rounded-bl-full"></div>
 
-  <!-- Wave shape -->
-  <img 
-    src="images/shape-03.svg"
-    class="absolute bottom-10 left-10 w-20 opacity-70"
-  />
+          <!-- Image -->
+          <img src="images/hero.png" alt="Hero" class="relative z-10 w-[700px] object-contain" />
 
-</div>
+          <!-- Wave shape -->
+          <img src="images/shape-03.svg" class="absolute bottom-10 left-10 w-20 opacity-70" />
+
         </div>
+      </div>
       </div>
     </section>
 
     <section id="features" class="py-16 sm:py-20">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-6 md:grid-cols-3">
-          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <div
+            class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
             <img src="images/icon-01.svg" alt="Support" class="h-12 w-12" />
             <h3 class="mt-4 text-xl font-semibold">24/7 Support</h3>
             <p class="mt-2 text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet conse adipiscing elit.</p>
           </div>
-          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <div
+            class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
             <img src="images/icon-02.svg" alt="Ownership" class="h-12 w-12" />
             <h3 class="mt-4 text-xl font-semibold">Take Ownership</h3>
             <p class="mt-2 text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet conse adipiscing elit.</p>
           </div>
-          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+          <div
+            class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
             <img src="images/icon-03.svg" alt="Team Work" class="h-12 w-12" />
             <h3 class="mt-4 text-xl font-semibold">Team Work</h3>
             <p class="mt-2 text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet conse adipiscing elit.</p>
@@ -138,10 +186,15 @@
         </div>
         <div class="flex flex-col justify-center">
           <span class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">Why Choose Us</span>
-          <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">We Make Our customers happy by giving Best services.</h2>
-          <p class="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
-          <a href="https://www.youtube.com/watch?v=xcJtL7QggTI" class="mt-8 inline-flex items-center gap-3 text-base font-semibold text-slate-900 dark:text-white">
-            <span class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-soft">
+          <h2 class="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">We Make Our customers happy by giving Best
+            services.</h2>
+          <p class="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">It is a long established fact that a
+            reader will be distracted by the readable content of a page when looking at its layout. The point of using
+            Lorem Ipsum.</p>
+          <a href="https://www.youtube.com/watch?v=xcJtL7QggTI"
+            class="mt-8 inline-flex items-center gap-3 text-base font-semibold text-slate-900 dark:text-white">
+            <span
+              class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-soft">
               <img src="images/icon-play.svg" alt="Play" class="h-5 w-5" />
             </span>
             SEE HOW WE WORK
@@ -154,20 +207,24 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-3xl text-center">
           <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Meet With Our Creative Dedicated Team</h2>
-          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.</p>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.</p>
         </div>
         <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-950">
+          <div
+            class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-950">
             <img src="images/team-01.png" alt="Olivia Andrium" class="w-full rounded-2xl object-cover" />
             <h3 class="mt-5 text-xl font-semibold">Olivia Andrium</h3>
             <p class="mt-1 text-slate-600 dark:text-slate-300">Product Manager</p>
           </div>
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-950">
+          <div
+            class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-950">
             <img src="images/team-02.png" alt="Jemse Kemorun" class="w-full rounded-2xl object-cover" />
             <h3 class="mt-5 text-xl font-semibold">Jemse Kemorun</h3>
             <p class="mt-1 text-slate-600 dark:text-slate-300">Product Designer</p>
           </div>
-          <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-950">
+          <div
+            class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-950">
             <img src="images/team-03.png" alt="Avi Pestarica" class="w-full rounded-2xl object-cover" />
             <h3 class="mt-5 text-xl font-semibold">Avi Pestarica</h3>
             <p class="mt-1 text-slate-600 dark:text-slate-300">Web Designer</p>
@@ -180,11 +237,13 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-3xl text-center">
           <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">We Offer The Best Quality Service for You</h2>
-          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.</p>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus.</p>
         </div>
         <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <template x-for="service in services" :key="service.title">
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900">
               <img :src="service.icon" :alt="service.title" class="h-12 w-12" />
               <h3 class="mt-4 text-xl font-semibold" x-text="service.title"></h3>
               <p class="mt-2 text-slate-600 dark:text-slate-300" x-text="service.description"></p>
@@ -198,31 +257,44 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-3xl text-center">
           <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">We Offer Great Affordable Premium Prices.</h2>
-          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using.</p>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">It is a long established fact that a reader will be
+            distracted by the readable content of a page when looking at its layout. The point of using.</p>
         </div>
 
         <div class="mt-8 flex items-center justify-center gap-4">
           <span class="text-sm font-medium">Bill Monthly</span>
-          <button @click="billPlan = billPlan === 'monthly' ? 'annually' : 'monthly'" class="relative inline-flex h-8 w-16 items-center rounded-full bg-slate-300 p-1 dark:bg-slate-700">
-            <span :class="billPlan === 'annually' ? 'translate-x-8' : 'translate-x-0'" class="inline-block h-6 w-6 transform rounded-full bg-white transition"></span>
+          <button @click="billPlan = billPlan === 'monthly' ? 'annually' : 'monthly'"
+            class="relative inline-flex h-8 w-16 items-center rounded-full bg-slate-300 p-1 dark:bg-slate-700">
+            <span :class="billPlan === 'annually' ? 'translate-x-8' : 'translate-x-0'"
+              class="inline-block h-6 w-6 transform rounded-full bg-white transition"></span>
           </button>
           <span class="text-sm font-medium">Bill Annually</span>
         </div>
 
         <div class="mt-12 grid gap-6 lg:grid-cols-3">
           <template x-for="plan in plans" :key="plan.name">
-            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-soft dark:border-slate-800 dark:bg-slate-950">
+            <div
+              class="rounded-3xl border border-slate-200 bg-white p-8 shadow-soft dark:border-slate-800 dark:bg-slate-950">
               <h3 class="text-xl font-semibold" x-text="plan.name"></h3>
               <div class="mt-6 flex items-end gap-2">
-                <span class="text-4xl font-extrabold" x-text="`$${billPlan === 'monthly' ? plan.price.monthly : plan.price.annually}`"></span>
-                <span class="pb-1 text-slate-500 dark:text-slate-400" x-text="billPlan === 'monthly' ? '/per month' : '/per year'"></span>
+                <span class="text-4xl font-extrabold"
+                  x-text="`$${billPlan === 'monthly' ? plan.price.monthly : plan.price.annually}`"></span>
+                <span class="pb-1 text-slate-500 dark:text-slate-400"
+                  x-text="billPlan === 'monthly' ? '/per month' : '/per year'"></span>
               </div>
               <p class="mt-3 text-sm text-slate-500 dark:text-slate-400">No credit card required</p>
-              <a href="#" :class="plan.featured ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700'" class="mt-6 inline-flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition">Try for free</a>
+              <a href="#"
+                :class="plan.featured ? 'bg-blue-600 text-white hover:bg-blue-700' : 'bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700'"
+                class="mt-6 inline-flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition">Try
+                for free</a>
               <ul class="mt-6 space-y-3 text-sm text-slate-600 dark:text-slate-300">
                 <template x-for="feature in plan.features" :key="feature">
                   <li class="flex items-start gap-3">
-                    <svg class="mt-0.5 h-5 w-5 flex-none text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="m4.5 12.75 6 6 9-13.5"/></svg>
+                    <svg class="mt-0.5 h-5 w-5 flex-none text-green-600" fill="none" stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                        d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
                     <span x-text="feature"></span>
                   </li>
                 </template>
@@ -233,6 +305,652 @@
         </div>
       </div>
     </section>
+
+    <!-- ===== Projects Start ===== -->
+    <section class="relative overflow-hidden py-16 sm:py-20 dark:bg-[#0d1128]">
+      <!-- Section Title -->
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="animate__animated animate__fadeInDown wow mx-auto max-w-3xl text-center" data-wow-duration="2s"
+          data-wow-delay="0.5s">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">We Offer Great Affordable Premium Prices.</h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">It is a long established fact that a reader will be
+            distracted by the readable content of a page when looking at its layout. The point of using.</p>
+        </div>
+
+        <!-- Tab Buttons -->
+        <div x-data="{filterTab: 1}" class="mt-10">
+          <div class="flex flex-wrap justify-center gap-2 mb-8">
+            <button @click="filterTab = 1"
+              :class="filterTab === 1 ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'"
+              class="rounded-full px-5 py-2 text-sm font-medium transition">All</button>
+            <button @click="filterTab = 2"
+              :class="filterTab === 2 ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'"
+              class="rounded-full px-5 py-2 text-sm font-medium transition">Branding Strategy</button>
+            <button @click="filterTab = 3"
+              :class="filterTab === 3 ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'"
+              class="rounded-full px-5 py-2 text-sm font-medium transition">Digital Experiences</button>
+            <button @click="filterTab = 4"
+              :class="filterTab === 4 ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'"
+              class="rounded-full px-5 py-2 text-sm font-medium transition">Ecommerce</button>
+          </div>
+
+          <!-- Projects Grid -->
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+            <!-- project-01: branding + ecommerce -->
+            <div x-show="filterTab === 1 || filterTab === 2 || filterTab === 4"
+              x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="group relative overflow-hidden rounded-2xl bg-white shadow-soft dark:bg-slate-900">
+              <img src="images/project-01.png" alt="Project" class="w-full h-56 object-cover" />
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm translate-y-full transition-all duration-500 ease-in-out group-hover:translate-y-0">
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Photo Retouching</h4>
+                <p class="text-sm text-blue-600 dark:text-blue-400">Branded Ecommerce</p>
+                <a href="#"
+                  class="mt-4 flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-white shadow transition hover:bg-blue-700">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- project-02: digital -->
+            <div x-show="filterTab === 1 || filterTab === 3" x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+              class="group relative overflow-hidden rounded-2xl bg-white shadow-soft dark:bg-slate-900">
+              <img src="images/project-02.png" alt="Project" class="w-full h-56 object-cover" />
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm translate-y-full transition-all duration-500 ease-in-out group-hover:translate-y-0">
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Digital Product Story</h4>
+                <p class="text-sm text-blue-600 dark:text-blue-400">Digital Experiences</p>
+                <a href="#"
+                  class="mt-4 flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-white shadow transition hover:bg-blue-700">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- project-04: branding + ecommerce -->
+            <div x-show="filterTab === 1 || filterTab === 2 || filterTab === 4"
+              x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="group relative overflow-hidden rounded-2xl bg-white shadow-soft dark:bg-slate-900 lg:row-span-2 lg:h-[29.5rem]">
+              <img src="images/project-04.png" alt="Project"
+                class="w-full object-cover h-56 lg:absolute lg:inset-0 lg:h-full" />
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm translate-y-full transition-all duration-500 ease-in-out group-hover:translate-y-0">
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Identity Refresh</h4>
+                <p class="text-sm text-blue-600 dark:text-blue-400">Branded Ecommerce</p>
+                <a href="#"
+                  class="mt-4 flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-white shadow transition hover:bg-blue-700">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- project-03: digital + ecommerce — wide item -->
+            <div x-show="filterTab === 1 || filterTab === 3 || filterTab === 4"
+              x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
+              x-transition:enter-end="opacity-100 scale-100"
+              class="group relative overflow-hidden rounded-2xl bg-white shadow-soft dark:bg-slate-900 md:col-span-2 lg:col-span-2">
+              <img src="images/project-03.png" alt="Project" class="w-full h-56 object-cover" />
+              <div
+                class="absolute inset-0 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm translate-y-full transition-all duration-500 ease-in-out group-hover:translate-y-0">
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white">Store Experience</h4>
+                <p class="text-sm text-blue-600 dark:text-blue-400">Branded Ecommerce</p>
+                <a href="#"
+                  class="mt-4 flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-white shadow transition hover:bg-blue-700">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Projects End ===== -->
+
+    <!-- ===== Testimonials Start ===== -->
+    <section class="py-16 sm:py-24 bg-slate-50 dark:bg-[#0d1128]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="animate__animated animate__fadeInDown wow mx-auto max-w-3xl text-center mb-12"
+          data-wow-duration="2s" data-wow-delay="0.2s">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Client's Testimonials</h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">It is a long established fact that a reader will be
+            distracted by the readable content of a page when looking at its layout. The point of using.</p>
+        </div>
+
+        <!-- Swiper Testimonials -->
+        <div class="swiper testimonial-01">
+          <div class="animate__animated animate__fadeInDown wow swiper-wrapper" data-wow-duration="2s"
+            data-wow-delay="0.4s">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <div class="relative overflow-hidden rounded-2xl bg-white p-8 shadow-soft dark:bg-slate-900 md:p-10">
+                <span class="absolute right-0 top-0 h-full w-1.5 flex flex-col">
+                  <span class="h-1/2 bg-blue-600 block"></span>
+                  <span class="h-1/2 bg-pink-400 block"></span>
+                </span>
+                <div class="flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
+                  <div class="w-full shrink-0 md:w-1/3">
+                    <img src="images/testimonial.png" alt="User" class="w-full h-56 rounded-xl object-cover" />
+                  </div>
+                  <div>
+                    <img src="images/icon-quote.svg" alt="Quote" class="mb-3" />
+                    <p class="italic text-slate-500 dark:text-slate-300 text-base md:text-xl">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor diam, feugiat quis enim sed,
+                      ullamcorper semper ligula. Mauris consequat justo volutpat.
+                    </p>
+                    <div class="mt-6 flex items-end justify-between">
+                      <div>
+                        <span class="block font-semibold text-slate-900 dark:text-white">Devid Smith</span>
+                        <span class="text-sm text-slate-500 dark:text-slate-400">Founder @democompany</span>
+                      </div>
+                      <img src="images/brand-light-02.svg" alt="Brand" class="h-6 dark:opacity-60" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+              <div class="relative overflow-hidden rounded-2xl bg-white p-8 shadow-soft dark:bg-slate-900 md:p-10">
+                <span class="absolute right-0 top-0 h-full w-1.5 flex flex-col">
+                  <span class="h-1/2 bg-blue-600 block"></span>
+                  <span class="h-1/2 bg-pink-400 block"></span>
+                </span>
+                <div class="flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
+                  <div class="w-full shrink-0 md:w-1/3">
+                    <img src="images/testimonial.png" alt="User" class="w-full h-56 rounded-xl object-cover" />
+                  </div>
+                  <div>
+                    <img src="images/icon-quote.svg" alt="Quote" class="mb-3" />
+                    <p class="italic text-slate-500 dark:text-slate-300 text-base md:text-xl">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor diam, feugiat quis enim sed,
+                      ullamcorper semper ligula. Mauris consequat justo volutpat.
+                    </p>
+                    <div class="mt-6 flex items-end justify-between">
+                      <div>
+                        <span class="block font-semibold text-slate-900 dark:text-white">Jane Doe</span>
+                        <span class="text-sm text-slate-500 dark:text-slate-400">CEO @techstartup</span>
+                      </div>
+                      <img src="images/brand-light-02.svg" alt="Brand" class="h-6 dark:opacity-60" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation -->
+          <div class="animate__animated animate__fadeInDown wow mt-8 flex justify-center gap-4" data-wow-duration="2s"
+            data-wow-delay="0.6s">
+            <div
+              class="swiper-button-prev flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-slate-300 bg-transparent text-slate-500 transition hover:border-slate-400 hover:text-slate-700 dark:border-slate-600 dark:text-slate-400 dark:hover:text-slate-200">
+              <svg class="!w-[14px] !h-[14px]" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M3.52366 7.83336L7.99366 12.3034L6.81533 13.4817L0.333663 7.00002L6.81533 0.518357L7.99366 1.69669L3.52366 6.16669L13.667 6.16669L13.667 7.83336L3.52366 7.83336Z"
+                  fill="currentColor" />
+              </svg>
+            </div>
+            <div
+              class="swiper-button-next flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-slate-300 bg-transparent text-slate-500 transition hover:border-slate-400 hover:text-slate-700 dark:border-slate-600 dark:text-slate-400 dark:hover:text-slate-200">
+              <svg class="!w-[14px] !h-[14px]" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10.4763 6.16664L6.00634 1.69664L7.18467 0.518311L13.6663 6.99998L7.18467 13.4816L6.00634 12.3033L10.4763 7.83331H0.333008V6.16664H10.4763Z"
+                  fill="currentColor" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Testimonials End ===== -->
+
+    <!-- ===== Counter Start ===== -->
+    <section class="relative overflow-hidden py-20 bg-slate-100 dark:bg-[#1c2136]">
+      <img src="images/shape-11.svg" alt="Shape" class="absolute bottom-0 left-10 opacity-60" />
+      <img src="images/shape-07.svg" alt="Shape" class="absolute top-3 right-10 opacity-60" />
+      <img src="images/shape-14.svg" alt="Shape" class="absolute top-0 left-1/3 -translate-x-1/2 opacity-60" />
+      <img src="images/shape-15.svg" alt="Shape" class="absolute bottom-0 left-0 w-full opacity-30" />
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 gap-10 text-center md:grid-cols-4">
+          <div class="animate__animated animate__fadeInDown wow" data-wow-duration="2s" data-wow-delay="0.8s">
+            <h2 class="text-5xl font-bold text-slate-900 dark:text-white md:text-6xl">785</h2>
+            <p class="mt-2 text-slate-500 dark:text-slate-400">Global Brands</p>
+          </div>
+          <div class="animate__animated animate__fadeInDown wow" data-wow-duration="2s" data-wow-delay="0.6s">
+            <h2 class="text-5xl font-bold text-slate-900 dark:text-white md:text-6xl">533</h2>
+            <p class="mt-2 text-slate-500 dark:text-slate-400">Happy Clients</p>
+          </div>
+          <div class="animate__animated animate__fadeInDown wow" data-wow-duration="2s" data-wow-delay="0.4s">
+            <h2 class="text-5xl font-bold text-slate-900 dark:text-white md:text-6xl">865</h2>
+            <p class="mt-2 text-slate-500 dark:text-slate-400">Winning Award</p>
+          </div>
+          <div class="animate__animated animate__fadeInDown wow" data-wow-duration="2s" data-wow-delay="0.2s">
+            <h2 class="text-5xl font-bold text-slate-900 dark:text-white md:text-6xl">346</h2>
+            <p class="mt-2 text-slate-500 dark:text-slate-400">Happy Clients</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Counter End ===== -->
+
+    <!-- ===== Clients Start ===== -->
+    <section class="py-16 sm:py-20 dark:bg-[#0d1128]">
+      <div class="animate__animated animate__fadeInDown wow mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+        data-wow-duration="2s" data-wow-delay="0.2s">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Trusted by Global Brands</h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">It is a long established fact that a reader will be
+            distracted by the readable content of a page when looking at its layout. The point of using.</p>
+        </div>
+        <div class="mt-12 grid grid-cols-3 place-items-center gap-8 lg:grid-cols-6 lg:gap-14">
+          <a href="#"
+            class="flex items-center justify-center opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0">
+            <img class="h-8 dark:hidden" src="images/brand-light-01.svg" alt="Clients" />
+            <img class="hidden h-8 dark:block" src="images/brand-dark-01.svg" alt="Clients" />
+          </a>
+          <a href="#"
+            class="flex items-center justify-center opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0">
+            <img class="h-8 dark:hidden" src="images/brand-light-02.svg" alt="Clients" />
+            <img class="hidden h-8 dark:block" src="images/brand-dark-02.svg" alt="Clients" />
+          </a>
+          <a href="#"
+            class="flex items-center justify-center opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0">
+            <img class="h-8 dark:hidden" src="images/brand-light-03.svg" alt="Clients" />
+            <img class="hidden h-8 dark:block" src="images/brand-dark-03.svg" alt="Clients" />
+          </a>
+          <a href="#"
+            class="flex items-center justify-center opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0">
+            <img class="h-8 dark:hidden" src="images/brand-light-04.svg" alt="Clients" />
+            <img class="hidden h-8 dark:block" src="images/brand-dark-04.svg" alt="Clients" />
+          </a>
+          <a href="#"
+            class="flex items-center justify-center opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0">
+            <img class="h-8 dark:hidden" src="images/brand-light-05.svg" alt="Clients" />
+            <img class="hidden h-8 dark:block" src="images/brand-dark-05.svg" alt="Clients" />
+          </a>
+          <a href="#"
+            class="flex items-center justify-center opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0">
+            <img class="h-8 dark:hidden" src="images/brand-light-06.svg" alt="Clients" />
+            <img class="hidden h-8 dark:block" src="images/brand-dark-06.svg" alt="Clients" />
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Clients End ===== -->
+
+    <!-- ===== Blog Start ===== -->
+    <section class="py-16 sm:py-24 bg-slate-50 dark:bg-[#0d1128]">
+      <div class="animate__animated animate__fadeInDown wow mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+        data-wow-duration="2s" data-wow-delay="0.2s">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Latest Blogs &amp; News</h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">It is a long established fact that a reader will be
+            distracted by the readable content of a page when looking at its layout. The point of using.</p>
+        </div>
+        <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Blog Item 1 -->
+          <article
+            class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <div class="relative overflow-hidden">
+              <img src="images/blog-01.png" alt="Blog" class="w-full h-52 object-cover" />
+              <div
+                class="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm translate-y-full transition-all duration-500 ease-in-out group-hover:translate-y-0">
+                <a href="blog-single.html"
+                  class="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700">Read
+                  More</a>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                <span class="flex items-center gap-1.5"><img src="images/icon-man.svg" alt="Author" class="h-4 w-4" />
+                  Musharof Chy</span>
+                <span class="flex items-center gap-1.5"><img src="images/icon-calender.svg" alt="Date"
+                    class="h-4 w-4" /> 25 Dec, 2025</span>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold leading-snug">
+                <a href="blog-single.html" class="hover:text-blue-600 transition">Free advertising for your online
+                  business</a>
+              </h3>
+            </div>
+          </article>
+          <!-- Blog Item 2 -->
+          <article
+            class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <div class="relative overflow-hidden">
+              <img src="images/blog-02.png" alt="Blog" class="w-full h-52 object-cover" />
+              <div
+                class="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm translate-y-full transition-all duration-500 ease-in-out group-hover:translate-y-0">
+                <a href="blog-single.html"
+                  class="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700">Read
+                  More</a>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                <span class="flex items-center gap-1.5"><img src="images/icon-man.svg" alt="Author" class="h-4 w-4" />
+                  Musharof Chy</span>
+                <span class="flex items-center gap-1.5"><img src="images/icon-calender.svg" alt="Date"
+                    class="h-4 w-4" /> 25 Dec, 2025</span>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold leading-snug">
+                <a href="blog-single.html" class="hover:text-blue-600 transition">9 simple ways to improve your design
+                  skills</a>
+              </h3>
+            </div>
+          </article>
+          <!-- Blog Item 3 -->
+          <article
+            class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900">
+            <div class="relative overflow-hidden">
+              <img src="images/blog-03.png" alt="Blog" class="w-full h-52 object-cover" />
+              <div
+                class="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm translate-y-full transition-all duration-500 ease-in-out group-hover:translate-y-0">
+                <a href="blog-single.html"
+                  class="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700">Read
+                  More</a>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+                <span class="flex items-center gap-1.5"><img src="images/icon-man.svg" alt="Author" class="h-4 w-4" />
+                  Musharof Chy</span>
+                <span class="flex items-center gap-1.5"><img src="images/icon-calender.svg" alt="Date"
+                    class="h-4 w-4" /> 25 Dec, 2025</span>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold leading-snug">
+                <a href="blog-single.html" class="hover:text-blue-600 transition">Tips to quickly improve your coding
+                  speed.</a>
+              </h3>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Blog End ===== -->
+
+    <!-- ===== Contact Start ===== -->
+    <section id="support" class="relative overflow-hidden py-16 sm:py-24 bg-white dark:bg-slate-950">
+      <img src="images/shape-03.svg" alt="Shape" class="absolute top-10 left-8 w-16 opacity-40" />
+      <img src="images/shape-06.svg" alt="Shape" class="absolute bottom-8 left-20 w-10 opacity-40" />
+      <img src="images/shape-07.svg" alt="Shape" class="absolute top-20 right-16 w-12 opacity-40" />
+      <img src="images/shape-12.svg" alt="Shape" class="absolute bottom-0 left-0 w-full opacity-20 dark:opacity-10" />
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="animate__animated animate__fadeInDown wow mx-auto max-w-3xl text-center" data-wow-duration="2s"
+          data-wow-delay="0.2s">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Let's Stay Connected</h2>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">It is a long established fact that a reader will be
+            distracted by the readable content of a page when looking at its layout. The point of using.</p>
+        </div>
+
+        <div class="animate__animated animate__fadeInDown wow mt-14 grid gap-8 lg:grid-cols-10" data-wow-duration="1s"
+          data-wow-delay="0.4s">
+          <!-- Contact Info -->
+          <div class="relative rounded-3xl bg-slate-50 p-8 shadow-soft dark:bg-slate-900 sm:p-10 lg:col-span-3">
+            <img src="images/shape-03.svg" alt="Shape" class="absolute top-6 right-6 w-12 opacity-40" />
+            <img src="images/shape-06.svg" alt="Shape" class="absolute bottom-10 left-6 w-8 opacity-40" />
+            <div class="space-y-6">
+              <div>
+                <h4 class="mb-1 text-base font-semibold text-slate-900 dark:text-white">Email Address</h4>
+                <p class="text-slate-600 dark:text-slate-300"><a href="mailto:info@example.com"
+                    class="hover:text-blue-600 transition">info@example.com</a></p>
+              </div>
+              <div>
+                <h4 class="mb-1 text-base font-semibold text-slate-900 dark:text-white">Office Location</h4>
+                <p class="text-slate-600 dark:text-slate-300">76/A, Green Valle, California USA.</p>
+              </div>
+              <div>
+                <h4 class="mb-1 text-base font-semibold text-slate-900 dark:text-white">Phone Number</h4>
+                <p class="text-slate-600 dark:text-slate-300"><a href="tel:+00987543433223"
+                    class="hover:text-blue-600 transition">+009 8754 3433 223</a></p>
+              </div>
+              <div>
+                <h4 class="mb-1 text-base font-semibold text-slate-900 dark:text-white">Skype Email</h4>
+                <p class="text-slate-600 dark:text-slate-300"><a href="mailto:skype@example.com"
+                    class="hover:text-blue-600 transition">skype@example.com</a></p>
+              </div>
+            </div>
+            <hr class="my-8 border-slate-200 dark:border-slate-700" />
+            <div>
+              <h4 class="mb-4 text-base font-semibold text-slate-900 dark:text-white">Social Media</h4>
+              <ul class="flex items-center gap-3">
+                <li>
+                  <a href="#"
+                    class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition hover:border-blue-600 hover:bg-blue-600 hover:text-white dark:border-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#"
+                    class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition hover:border-blue-600 hover:bg-blue-600 hover:text-white dark:border-slate-700 dark:text-slate-300">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div
+            class="rounded-3xl border border-slate-200 bg-white p-8 shadow-soft dark:border-slate-800 dark:bg-slate-900 sm:p-10 lg:col-span-7">
+            <form action="https://formbold.com/s/unique_form_id" method="POST">
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label class="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300" for="fullname">Full
+                    name</label>
+                  <input type="text" name="fullname" id="fullname" placeholder="Devid Wonder"
+                    class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-blue-500" />
+                </div>
+                <div>
+                  <label class="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300" for="email">Email
+                    address</label>
+                  <input type="email" name="email" id="email" placeholder="example@gmail.com"
+                    class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-blue-500" />
+                </div>
+                <div>
+                  <label class="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300" for="phone">Phone
+                    number</label>
+                  <input type="text" name="phone" id="phone" placeholder="+009 3342 3432"
+                    class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-blue-500" />
+                </div>
+                <div>
+                  <label class="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300"
+                    for="subject">Subject</label>
+                  <input type="text" name="subject" id="subject" placeholder="Type your subject"
+                    class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-blue-500" />
+                </div>
+              </div>
+              <div class="mt-5">
+                <label class="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-300"
+                  for="message">Message</label>
+                <textarea name="message" id="message" rows="4" placeholder="Type your message"
+                  class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-blue-500"></textarea>
+              </div>
+              <div class="mt-6 text-right">
+                <button type="submit"
+                  class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-blue-700">Send
+                  Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Contact End ===== -->
+
+    <!-- ===== CTA Start ===== -->
+    <section class="relative overflow-hidden bg-blue-600 py-16 sm:py-20">
+      <img class="absolute bottom-0 left-0 w-full opacity-20" src="images/shape-16.svg" alt="Bg Shape" />
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center justify-between gap-8 sm:flex-row">
+          <div class="animate__animated animate__fadeInLeft wow" data-wow-duration="2s" data-wow-delay="0.2s">
+            <h2 class="text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
+              Join with 5000+ Startups Growing with Base.
+            </h2>
+            <p class="mt-3 text-blue-100">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis nibh lorem. Duis sed odio lorem. In a
+              efficitur leo. Ut venenatis rhoncus.
+            </p>
+          </div>
+          <div class="shrink-0 animate__animated animate__fadeInRight wow" data-wow-duration="2s" data-wow-delay="0.2s">
+            <a href="#"
+              class="inline-flex items-center justify-center rounded-xl border-2 border-white bg-transparent px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-blue-600">
+              Get Started Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== CTA End ===== -->
+
+  </main>
+
+  <!-- ===== Footer Start ===== -->
+  <footer class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+    <div class="animate__animated animate__fadeInDown wow mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8"
+      data-wow-duration="2s" data-wow-delay="0.2s">
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Brand -->
+        <div>
+          <a href="index.html" class="flex items-center gap-3">
+            <img src="images/logo-light.svg" alt="Logo" class="h-8 dark:hidden" />
+            <img src="images/logo-dark.svg" alt="Logo" class="hidden h-8 dark:block" />
+          </a>
+          <p class="mt-4 text-sm text-slate-500 dark:text-slate-400">Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit.</p>
+          <ul class="mt-5 flex items-center gap-3">
+            <li>
+              <a href="#"
+                class="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-blue-600 hover:bg-blue-600 hover:text-white dark:border-slate-700 dark:text-slate-400">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47 14 5.5 16 5.5H17.5V2.14C17.174 2.097 15.943 2 14.643 2C11.928 2 10 3.657 10 6.7V9.5H7V13.5H10V22H14V13.5Z" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                class="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-blue-600 hover:bg-blue-600 hover:text-white dark:border-slate-700 dark:text-slate-400">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M22.162 5.65593C21.3985 5.99362 20.589 6.2154 19.76 6.31393C20.6337 5.79136 21.2877 4.96894 21.6 3.99993C20.78 4.48793 19.881 4.82993 18.944 5.01493C18.3146 4.34151 17.4803 3.89489 16.5709 3.74451C15.6615 3.59413 14.7279 3.74842 13.9153 4.18338C13.1026 4.61834 12.4564 5.30961 12.0771 6.14972C11.6978 6.98983 11.6067 7.93171 11.818 8.82893C10.1551 8.74558 8.52832 8.31345 7.04328 7.56059C5.55823 6.80773 4.24812 5.75098 3.19799 4.45893C2.82628 5.09738 2.63095 5.82315 2.63199 6.56193C2.63199 8.01193 3.36999 9.29293 4.49199 10.0429C3.828 10.022 3.17862 9.84271 2.59799 9.51993V9.57193C2.59819 10.5376 2.93236 11.4735 3.54384 12.221C4.15532 12.9684 5.00647 13.4814 5.95299 13.6729C5.33661 13.84 4.6903 13.8646 4.06299 13.7449C4.32986 14.5762 4.85 15.3031 5.55058 15.824C6.25117 16.345 7.09712 16.6337 7.96999 16.6499C7.10247 17.3313 6.10917 17.8349 5.04687 18.1321C3.98458 18.4293 2.87412 18.5142 1.77899 18.3819C3.69069 19.6114 5.91609 20.2641 8.18899 20.2619C15.882 20.2619 20.089 13.8889 20.089 8.36193C20.089 8.18193 20.084 7.99993 20.076 7.82193C20.8949 7.2301 21.6016 6.49695 22.163 5.65693L22.162 5.65593Z" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                class="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:border-blue-600 hover:bg-blue-600 hover:text-white dark:border-slate-700 dark:text-slate-400">
+                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M6.94 5.00002C6.93974 5.53046 6.72877 6.03906 6.35351 6.41394C5.97825 6.78883 5.46944 6.99929 4.939 6.99902C4.40857 6.99876 3.89997 6.78779 3.52508 6.41253C3.1502 6.03727 2.93974 5.52846 2.94 4.99802C2.94027 4.46759 3.15124 3.95899 3.5265 3.5841C3.90176 3.20922 4.41057 2.99876 4.941 2.99902C5.47144 2.99929 5.98004 3.21026 6.35492 3.58552C6.72981 3.96078 6.94027 4.46959 6.94 5.00002ZM7 8.48002H3V21H7V8.48002ZM13.32 8.48002H9.34V21H13.28V14.43C13.28 10.77 18.05 10.43 18.05 14.43V21H22V13.07C22 6.90002 14.94 7.13002 13.28 10.16L13.32 8.48002Z" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="mb-5 text-sm font-semibold uppercase tracking-wider text-slate-900 dark:text-white">Quick Links
+          </h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#" class="text-slate-500 transition hover:text-blue-600 dark:text-slate-400">Home</a></li>
+            <li><a href="#" class="text-slate-500 transition hover:text-blue-600 dark:text-slate-400">Product</a></li>
+            <li>
+              <a href="#"
+                class="inline-flex items-center gap-2 text-slate-500 transition hover:text-blue-600 dark:text-slate-400">
+                Careers <span
+                  class="rounded-full bg-green-500 px-2 py-0.5 text-xs font-semibold text-white">Hiring</span>
+              </a>
+            </li>
+            <li><a href="#pricing" class="text-slate-500 transition hover:text-blue-600 dark:text-slate-400">Pricing</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="mb-5 text-sm font-semibold uppercase tracking-wider text-slate-900 dark:text-white">Services</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#" class="text-slate-500 transition hover:text-blue-600 dark:text-slate-400">Web
+                Development</a></li>
+            <li><a href="#" class="text-slate-500 transition hover:text-blue-600 dark:text-slate-400">Graphics
+                Design</a></li>
+            <li><a href="#" class="text-slate-500 transition hover:text-blue-600 dark:text-slate-400">Digital
+                Marketing</a></li>
+            <li><a href="#" class="text-slate-500 transition hover:text-blue-600 dark:text-slate-400">Ui/Ux Design</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4 class="mb-2 text-sm font-semibold uppercase tracking-wider text-slate-900 dark:text-white">Newsletter</h4>
+          <p class="mb-4 text-sm text-slate-500 dark:text-slate-400">Subscribe to receive future updates</p>
+          <form action="https://formbold.com/s/unique_form_id" method="POST" class="relative">
+            <input type="email" placeholder="Email address"
+              class="w-full rounded-xl border border-slate-200 bg-white py-3 pl-4 pr-12 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-500" />
+            <button type="submit"
+              class="absolute inset-y-0 right-3 flex items-center justify-center text-slate-400 hover:text-blue-600 transition">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M3.1175 1.17318L18.5025 9.63484C18.5678 9.67081 18.6223 9.72365 18.6602 9.78786C18.6982 9.85206 18.7182 9.92527 18.7182 9.99984C18.7182 10.0744 18.6982 10.1476 18.6602 10.2118C18.6223 10.276 18.5678 10.3289 18.5025 10.3648L3.1175 18.8265C3.05406 18.8614 2.98262 18.8792 2.91023 18.8781C2.83783 18.8769 2.76698 18.857 2.70465 18.8201C2.64232 18.7833 2.59066 18.7308 2.55478 18.6679C2.51889 18.6051 2.50001 18.5339 2.5 18.4615V1.53818C2.50001 1.46577 2.51889 1.39462 2.55478 1.33174C2.59066 1.26885 2.64232 1.2164 2.70465 1.17956C2.76698 1.14272 2.83783 1.12275 2.91023 1.12163C2.98262 1.12051 3.05406 1.13828 3.1175 1.17318ZM4.16667 10.8332V16.3473L15.7083 9.99984L4.16667 3.65234V9.16651H8.33333V10.8332H4.16667Z" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="border-t border-slate-200 dark:border-slate-800">
+      <div
+        class="animate__animated animate__fadeInDown wow mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 flex flex-col items-center justify-between gap-3 text-sm text-slate-500 dark:text-slate-400 sm:flex-row"
+        data-wow-duration="2s" data-wow-delay="0.4s">
+        <ul class="flex items-center gap-5">
+          <li><a href="#" class="hover:text-blue-600 transition">English</a></li>
+          <li><a href="#" class="hover:text-blue-600 transition">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-blue-600 transition">Support</a></li>
+        </ul>
+        <p>&copy; 2025 Base. All rights reserved</p>
+      </div>
+    </div>
+  </footer>
+  <!-- ===== Footer End ===== -->
+
+  <!-- ===== Back to Top ===== -->
+  <button x-show="showTop" x-cloak x-transition @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    class="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition hover:bg-blue-700"
+    aria-label="Back to top">
+    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     function app() {
       return {
@@ -253,23 +971,6 @@
           { name: 'Growth Plan', featured: true, price: { monthly: 59, annually: 608 }, features: ['400 GB Storage', 'Unlimited Photos & Videos', 'Exclusive Support'] },
           { name: 'Business', featured: false, price: { monthly: 139, annually: 1568 }, features: ['400 GB Storage', 'Unlimited Photos & Videos', 'Exclusive Support'] }
         ],
-        projectTabs: [
-          { label: 'All', value: 'all' },
-          { label: 'Branding Strategy', value: 'branding' },
-          { label: 'Digital Experiences', value: 'digital' },
-          { label: 'Ecommerce', value: 'ecommerce' }
-        ],
-        projects: [
-          { image: 'images/project-01.png', title: 'Photo Retouching', category: 'Branded Ecommerce', tags: ['branding', 'ecommerce'] },
-          { image: 'images/project-02.png', title: 'Digital Product Story', category: 'Digital Experiences', tags: ['digital'] },
-          { image: 'images/project-04.png', title: 'Identity Refresh', category: 'Branded Ecommerce', tags: ['branding', 'ecommerce'] },
-          { image: 'images/project-03.png', title: 'Store Experience', category: 'Branded Ecommerce', tags: ['digital', 'ecommerce'] }
-        ],
-        posts: [
-          { image: 'images/blog-01.png', author: 'Musharof Chy', date: '25 Dec, 2025', title: 'Free advertising for your online business' },
-          { image: 'images/blog-02.png', author: 'Musharof Chy', date: '25 Dec, 2025', title: '9 simple ways to improve your design skills' },
-          { image: 'images/blog-03.png', author: 'Musharof Chy', date: '25 Dec, 2025', title: 'Tips to quickly improve your coding speed.' }
-        ],
         init() {
           const saved = localStorage.getItem('darkMode');
           this.darkMode = saved === null ? true : JSON.parse(saved);
@@ -281,13 +982,29 @@
         syncTheme() {
           localStorage.setItem('darkMode', JSON.stringify(this.darkMode));
           document.documentElement.classList.toggle('dark', this.darkMode);
-        },
-        filteredProjects(filter) {
-          if (filter === 'all') return this.projects;
-          return this.projects.filter(project => project.tags.includes(filter));
         }
       }
     }
   </script>
+
+  <!-- Swiper init for testimonials -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof Swiper !== 'undefined') {
+        new Swiper('.testimonial-01', {
+          loop: true,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      }
+    });
+  </script>
+  <script src="./libs/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
 </body>
+
 </html>
